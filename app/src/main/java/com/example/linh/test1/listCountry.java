@@ -24,7 +24,7 @@ public class listCountry extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_states);
+        setContentView(R.layout.activity_list_country);
         TextView sEmail = (TextView) findViewById(R.id.showEmail);
         Button backButton = (Button) findViewById(R.id.bBack);
         backButton.setOnClickListener(bb);
@@ -58,10 +58,12 @@ public class listCountry extends AppCompatActivity {
         try {
             pullParserFactory = XmlPullParserFactory.newInstance();
             XmlPullParser parser = pullParserFactory.newPullParser();
-            InputStream in_s = getApplicationContext().getAssets().open("xml/contryinfo.xml");
+            InputStream in_s = getApplicationContext().getAssets().open("@string/");
+//            parser= getResources().getXml(R.xml.contryinfo);
             parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
             parser.setInput(in_s, null);
-//            parser= getResources().getXml(R.xml.contryinfo);
+
+            getResources().getString();
             parserXML(parser);
         } catch (XmlPullParserException e) {
             e.printStackTrace();

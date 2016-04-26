@@ -15,7 +15,7 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/email"
-        android:text="Email"
+        android:text="@string/user_name"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
@@ -32,7 +32,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="@string/Login"
         android:id="@+id/loginButton"
         android:layout_marginTop="38dp"
         android:layout_below="@+id/password"
