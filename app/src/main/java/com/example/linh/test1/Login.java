@@ -5,10 +5,8 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
@@ -40,8 +38,8 @@ public class Login extends AppCompatActivity {
             boolean validateEmail = va.validateEmail(email.getText().toString());
             boolean validatePassword = va.validatePassword(password.getText().toString());
             if (validateEmail & validatePassword) {
-                Intent intent = new Intent(getApplicationContext(),listStates.class);
-                intent.putExtra("a",email.getText().toString());
+                Intent intent = new Intent(getApplicationContext(),listCountry.class);
+                intent.putExtra("email",email.getText().toString());
                 startActivity(intent);
             } else {
                 msg.setText(arlet);
