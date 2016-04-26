@@ -1,26 +1,21 @@
 package com.example.linh.test1;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
-
-import java.io.IOException;
-import java.io.InputStream;
+import java.lang.reflect.Field;
 import java.util.List;
 
 public class listCountry extends AppCompatActivity {
     private countryListAdapter adapter;
-    List<country> mCountry;
-    country testCounty;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +31,32 @@ public class listCountry extends AppCompatActivity {
             email = extras.getString("email");
         }
         sEmail.setText(email);
-        readDataFromXML();
+        fillDataListViewCountry();
+
+    }
+   public int[] countryImg = {0,0,0};
+    private void fillDataListViewCountry() {
+        Resources rs = getResources();
+        String[] countryName = rs.getStringArray(R.array.country_name);
+        String[] countryCode = rs.getStringArray(R.array.country_code);
+        getCountryImgCode(countryCode);
+        adapter = new countryListAdapter(getApplicationContext(),countryName,countryCode,countryImg);
+        ListView listViewCountry = (ListView) findViewById(R.id.ll);
+        listViewCountry.setAdapter(adapter);
+
+    }
+
+    private void getCountryImgCode(String[] countryCode) {
+        int i = 0;
+        Resources res = getResources();
+        countryImg[0] = res.getIdentifier("us","drawable",getPackageName());
+        for ( i = 0  ; i < countryCode.length; i++)
+        {
+            countryImg[i] = res.getIdentifier(countryCode[i],"drawable",getPackageName());
+        }
+
+
+
     }
 
     final View.OnClickListener bb = new View.OnClickListener() {
@@ -48,65 +68,7 @@ public class listCountry extends AppCompatActivity {
     };
 
 
-    private void readDataFromXML() {
-        XmlPullParserFactory pullParserFactory;
-//        ListView lv = (ListView) findViewById(R.id.ll);
-//        testCounty = new country("USA", "US", "us.png");
-//        mCountry.add(testCounty);
-//        adapter = new countryListAdapter(getApplicationContext(), mCountry);
-//        lv.setAdapter(adapter);
-        try {
-            pullParserFactory = XmlPullParserFactory.newInstance();
-            XmlPullParser parser = pullParserFactory.newPullParser();
-            InputStream in_s = getApplicationContext().getAssets().open("@string/");
-//            parser= getResources().getXml(R.xml.contryinfo);
-            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
-            parser.setInput(in_s, null);
 
-            getResources().getString();
-            parserXML(parser);
-        } catch (XmlPullParserException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    private void parserXML(XmlPullParser parser) throws XmlPullParserException, IOException {
-        int eventType = parser.getEventType();
-        country currentCountry = null;
-        while (eventType != XmlPullParser.END_DOCUMENT) {
-            String name = null;
-            switch (eventType) {
-                case XmlPullParser.START_DOCUMENT:
-                    break;
-                case XmlPullParser.START_TAG:
-                    name = parser.getName();
-                    if (name == "country") {
-                        currentCountry = new country();
-                    } else if (currentCountry != null) {
-                        if (name == "name") {
-                            currentCountry.setName(parser.nextText());
-                        } else if (name == "code") {
-                            currentCountry.setCode(parser.nextText());
-                        } else if (name == "img") {
-                            currentCountry.setImg(parser.nextText());
-                        }
-                    }
-                    break;
-                case XmlPullParser.END_TAG:
-                    name = parser.getName();
-                    if (name.equalsIgnoreCase("country") && currentCountry != null) {
-                        mCountry.add(currentCountry);
-                    }
-            }
-            eventType = parser.next();
-        }
-        ListView lv = (ListView) findViewById(R.id.ll);
-        adapter = new countryListAdapter(getApplicationContext(), mCountry);
-        lv.setAdapter(adapter);
-    }
 }
 
 
