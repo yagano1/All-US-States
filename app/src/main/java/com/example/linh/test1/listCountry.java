@@ -30,7 +30,6 @@ public class listCountry extends AppCompatActivity {
         fillDataListViewCountry();
 
     }
-   public int[] countryImg = {0,0,0} ;
     private void fillDataListViewCountry() {
         Resources rs = getResources();
         String[] countryName = rs.getStringArray(R.array.country_name);
