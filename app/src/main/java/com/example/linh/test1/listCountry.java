@@ -2,6 +2,7 @@ package com.example.linh.test1;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,28 +35,15 @@ public class listCountry extends AppCompatActivity {
         fillDataListViewCountry();
 
     }
-   public int[] countryImg = {0,0,0};
+   public int[] countryImg = {0,0,0} ;
     private void fillDataListViewCountry() {
         Resources rs = getResources();
         String[] countryName = rs.getStringArray(R.array.country_name);
         String[] countryCode = rs.getStringArray(R.array.country_code);
-        getCountryImgCode(countryCode);
-        adapter = new countryListAdapter(getApplicationContext(),countryName,countryCode,countryImg);
+        TypedArray imgs = getResources().obtainTypedArray(R.array.country_image_falg);
+        adapter = new countryListAdapter(getApplicationContext(),countryName,countryCode,imgs);
         ListView listViewCountry = (ListView) findViewById(R.id.ll);
         listViewCountry.setAdapter(adapter);
-
-    }
-
-    private void getCountryImgCode(String[] countryCode) {
-        int i = 0;
-        Resources res = getResources();
-        countryImg[0] = res.getIdentifier("us","drawable",getPackageName());
-        for ( i = 0  ; i < countryCode.length; i++)
-        {
-            countryImg[i] = res.getIdentifier(countryCode[i],"drawable",getPackageName());
-        }
-
-
 
     }
 

@@ -2,6 +2,7 @@ package com.example.linh.test1;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,15 +18,14 @@ public class countryListAdapter extends BaseAdapter {
     private Context mContext;
     private String[] countryName;
     private String[] countryCode;
-    private int[] countryImg;
-    public countryListAdapter(Context mContext, String[] countryName, String[] CountryCode, int[] countryImg) {
+    private TypedArray countryImg;
+    public countryListAdapter(Context mContext, String[] countryName, String[] CountryCode, TypedArray countryImg) {
         this.mContext = mContext;
         this.countryName = countryName;
         this.countryCode = CountryCode;
         this.countryImg = countryImg;
 
     }
-
     @Override
     public int getCount() {
         return countryName.length;
@@ -58,7 +58,8 @@ public class countryListAdapter extends BaseAdapter {
         }
         holder.textViewCountryName.setText(countryName[position]);
         holder.textViewCountryCode.setText(countryCode[position]);
-        holder.imageViewCountry.setImageResource(countryImg[position]);
+        holder.imageViewCountry.setImageResource(countryImg.getResourceId(position,-1));
+
         return convertView;
     }
 

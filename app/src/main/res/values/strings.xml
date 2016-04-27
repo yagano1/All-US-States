@@ -16,4 +16,9 @@
         <item>fr</item>
         <item>germany</item>
     </string-array>
+    <string-array name="country_image_falg">
+        <item>@drawable/us</item>
+        <item>@drawable/fr</item>
+        <item>@drawable/germany</item>
+    </string-array>
 </resources>
