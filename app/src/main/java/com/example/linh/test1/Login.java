@@ -15,31 +15,28 @@ import com.google.android.gms.common.api.GoogleApiClient;
 
 public class Login extends AppCompatActivity {
     private validate va = new validate();
-
+    Button loginButton = (Button) findViewById(R.id.loginButton);
     private GoogleApiClient client;
+    String arlet = "Email or password is not correct";
+    EditText edittextEmail = (EditText) findViewById(R.id.edittextEmail);
+    EditText edittextPassword = (EditText) findViewById(R.id.edittextPassword);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Button loginButton = (Button) findViewById(R.id.loginButton);
         loginButton.setOnClickListener(checklogin);
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-
     final View.OnClickListener checklogin = new View.OnClickListener() {
         public void onClick(View v) {
-            EditText email = (EditText) findViewById(R.id.email);
-            String arlet = "Email or password is not correct";
-            EditText password = (EditText) findViewById(R.id.password);
             TextView msg = (TextView) findViewById(R.id.dialog);
-            boolean validateEmail = va.validateEmail(email.getText().toString());
-            boolean validatePassword = va.validatePassword(password.getText().toString());
+            boolean validateEmail = va.validateEmail(edittextEmail.getText().toString());
+            boolean validatePassword = va.validatePassword(edittextPassword.getText().toString());
             if (validateEmail & validatePassword) {
-                Intent intent = new Intent(getApplicationContext(),listCountry.class);
-                intent.putExtra("email",email.getText().toString());
+                Intent intent = new Intent(getApplicationContext(), listCountry.class);
+                intent.putExtra("email", edittextEmail.getText().toString());
                 startActivity(intent);
             } else {
                 msg.setText(arlet);
