@@ -10,15 +10,7 @@ public class validate {
 
    public boolean validateEmail (String email)
    {
-      if(email.isEmpty())
-      {
-         return false;
-      }
-      else
-      {
          return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
-      }
-
    }
     public boolean validatePassword (String pass)
     {

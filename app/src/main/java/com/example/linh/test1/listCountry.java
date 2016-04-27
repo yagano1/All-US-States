@@ -3,17 +3,12 @@ package com.example.linh.test1;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import java.lang.reflect.Field;
-import java.util.List;
 
 public class listCountry extends AppCompatActivity {
     private countryListAdapter adapter;
@@ -40,11 +35,10 @@ public class listCountry extends AppCompatActivity {
         Resources rs = getResources();
         String[] countryName = rs.getStringArray(R.array.country_name);
         String[] countryCode = rs.getStringArray(R.array.country_code);
-        TypedArray imgs = getResources().obtainTypedArray(R.array.country_image_falg);
+        TypedArray imgs = getResources().obtainTypedArray(R.array.country_image_flag);
         adapter = new countryListAdapter(getApplicationContext(),countryName,countryCode,imgs);
         ListView listViewCountry = (ListView) findViewById(R.id.ll);
         listViewCountry.setAdapter(adapter);
-
     }
 
     final View.OnClickListener bb = new View.OnClickListener() {

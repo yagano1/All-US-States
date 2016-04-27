@@ -59,7 +59,6 @@ public class countryListAdapter extends BaseAdapter {
         holder.textViewCountryName.setText(countryName[position]);
         holder.textViewCountryCode.setText(countryCode[position]);
         holder.imageViewCountry.setImageResource(countryImg.getResourceId(position,-1));
-
         return convertView;
     }
 

@@ -7,18 +7,27 @@
     <string name="login_button">Login</string>
     <string name="back_button">Back</string>
     <string-array name="country_name">
-        <item>US</item>
+        <item>Uunited States</item>
         <item>France</item>
         <item>Germany</item>
+        <item>Japan</item>
+        <item>United Kingdom</item>
+        <item>Canada</item>
     </string-array>
     <string-array name="country_code">
-        <item>us</item>
-        <item>fr</item>
-        <item>germany</item>
+        <item>US</item>
+        <item>FR</item>
+        <item>DE</item>
+        <item>JP</item>
+        <item>UK</item>
+        <item>CA</item>
     </string-array>
-    <string-array name="country_image_falg">
+    <string-array name="country_image_flag">
         <item>@drawable/us</item>
         <item>@drawable/fr</item>
         <item>@drawable/germany</item>
+        <item>@drawable/japan</item>
+        <item>@drawable/uk</item>
+        <item>@drawable/canada</item>
     </string-array>
 </resources>
