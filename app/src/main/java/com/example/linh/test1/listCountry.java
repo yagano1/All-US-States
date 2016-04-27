@@ -16,8 +16,8 @@ public class listCountry extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_country);
-        TextView sEmail = (TextView) findViewById(R.id.showEmail);
-        Button backButton = (Button) findViewById(R.id.bBack);
+        TextView sEmail = (TextView) findViewById(R.id.textviewShowEmail);
+        Button backButton = (Button) findViewById(R.id.buttonBack);
         backButton.setOnClickListener(bb);
         Bundle extras = getIntent().getExtras();
         String email;
@@ -36,7 +36,7 @@ public class listCountry extends AppCompatActivity {
         String[] countryCode = rs.getStringArray(R.array.country_code);
         TypedArray imgs = getResources().obtainTypedArray(R.array.country_image_flag);
         adapter = new countryListAdapter(getApplicationContext(),countryName,countryCode,imgs);
-        ListView listViewCountry = (ListView) findViewById(R.id.ll);
+        ListView listViewCountry = (ListView) findViewById(R.id.listviewCountry);
         listViewCountry.setAdapter(adapter);
     }
 

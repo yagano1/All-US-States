@@ -10,28 +10,28 @@
     tools:context=".listCountry">
 
     <TextView
+        android:id="@+id/textviewShowEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Medium Text"
-        android:id="@+id/showEmail"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ListView
+        android:id="@+id/listviewCountry"
         android:layout_width="wrap_content"
         android:layout_height="300dp"
-        android:id="@+id/ll"
-        android:layout_below="@+id/showEmail"
-        android:layout_marginTop="50dp"
         android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textviewShowEmail"
+        android:layout_marginTop="50dp"
         android:choiceMode="none" />
 
     <Button
+        android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/back_button"
-        android:id="@+id/bBack"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="@string/back_button" />
 </RelativeLayout>

@@ -10,9 +10,7 @@
         android:id="@+id/countryName"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:textColor="#ab2828" />
-
-
+        android:textColor="@color/colorAccent" />
     <ImageView
         android:layout_width="90dp"
         android:layout_height="wrap_content"
